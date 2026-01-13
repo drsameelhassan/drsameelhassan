@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Testimonials - Dr. Sameel Physiotherapist</title>
+  <meta name="description" content="Read testimonials from patients who have recovered with Dr. Sameel's physiotherapy and telerehabilitation services.">
+  <link rel="canonical" href="https://drsameel.com/testimonials">
+  <link rel="icon" type="image/x-icon" href="../favicon.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    * { 
+      font-family: 'Poppins', sans-serif; 
+    }
+    .font-poppins { font-family: 'Poppins', sans-serif; }
+    
+    /* Side menu styles */
+        .side-menu {
+          position: fixed;
+          top: 0;
+          left: 0;
+          height: 100vh;
+          width: 300px;
+          max-width: 90%;
+          background-color: #ffffff;
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+          z-index: 1000;
+          transform: translateX(-100%);
+          transition: transform 0.3s ease-in-out;
+          display: flex;
+          flex-direction: column;
+        }
+        
+        .side-menu.active {
+          transform: translateX(0);
+        }
+        
+        .side-menu-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background-color: rgba(0, 0, 0, 0.6);
+          z-index: 999;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+        
+        .side-menu-overlay.active {
+          opacity: 1;
+          visibility: visible;
+        }
+        
+        .side-menu-header {
+          padding: 1.25rem;
+          border-bottom: 1px solid #e5e7eb;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        
+        .close-menu-btn {
+          background: none;
+          border: none;
+          cursor: pointer;
+          font-size: 1.5rem;
+          color: #4b5563;
+          padding: 0.5rem;
+          border-radius: 50%;
+          transition: background-color 0.2s;
+        }
+        
+        .close-menu-btn:hover {
+          background-color: #f3f4f6;
+        }
+        
+        .side-menu-nav {
+          flex: 1;
+          padding: 1.25rem;
+          display: flex;
+          flex-direction: column;
+        }
+        
+        .side-menu-nav a {
+          padding: 0.875rem;
+          margin: 0.3rem 0;
+          border-radius: 0.75rem;
+          text-decoration: none;
+          color: #4b5563;
+          transition: background-color 0.2s;
+          font-size: 1rem;
+          display: flex;
+          align-items: center;
+        }
+        
+        .side-menu-nav a:hover {
+          background-color: #f0fdf4;
+          color: #16a34a;
+        }
+        
+        .side-menu-footer {
+          padding: 1.25rem;
+          border-top: 1px solid #e5e7eb;
+        }
+        
+        /* Mobile touch enhancements */
+        .touch-target {
+          min-height: 44px;
+          min-width: 44px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        /* Smooth scrolling for anchor links */
+        html {
+          scroll-behavior: smooth;
+        }
+        
+        /* Improved mobile form elements */
+        input, select, textarea {
+          font-size: 16px; /* Prevents auto-zoom on iOS */
+        }
+        
+        /* Enhanced focus states for accessibility */
+        a:focus, button:focus {
+          outline: 2px solid #10b981;
+          outline-offset: 2px;
+        }
+        
+        /* Mobile-friendly section spacing */
+        section {
+          padding: 1.5rem;
+        }
+        
+        @media (min-width: 768px) {
+          section {
+            padding: 2rem;
+          }
+        }
+  </style>
+</head>
+<body class="bg-white">
+
+<!-- Side Menu Overlay -->
+<div class="side-menu-overlay" id="side-menu-overlay"></div>
+
+<!-- Side Menu -->
+<div class="side-menu" id="side-menu">
+  <div class="side-menu-header">
+    <h2 class="text-xl font-bold text-gray-800">Navigation</h2>
+    <button class="close-menu-btn" id="close-menu-button">
+      <i data-lucide="x" class="h-6 w-6"></i>
+    </button>
+  </div>
+  <nav class="side-menu-nav">
+    <a href="../index.html" class="text-gray-700 hover:text-green-500 font-medium transition-colors">Home</a>
+    <a href="./services.html" class="text-gray-700 hover:text-green-500 font-medium transition-colors">Services</a>
+    <a href="./about.html" class="text-gray-700 hover:text-green-500 font-medium transition-colors">About</a>
+    <a href="./telerehab.html" class="text-gray-700 hover:text-green-500 font-medium transition-colors">Telerehabilitation</a>
+    <a href="./testimonials.html" class="text-green-500 font-medium transition-colors border-b-2 border-green-500">Testimonials</a>
+    <a href="./contact.html" class="text-gray-700 hover:text-green-500 font-medium transition-colors">Contact</a>
+  </nav>
+  <div class="side-menu-footer">
+    <a href="./contact.html" class="bg-gradient-to-r from-green-500 to-green-400 text-white px-4 py-2 rounded-full text-sm font-medium hover:from-green-600 hover:to-green-500 transition-all duration-200 text-center inline-block w-full">Book Appointment</a>
+  </div>
+</div>
+  <!-- Enhanced Mobile Floating Navbar with improved touch targets and visibility -->
+  <nav class="fixed top-4 left-1/2 transform -translate-x-1/2 w-full max-w-6xl mx-4 z-50" role="navigation">
+    <div class="bg-white/90 backdrop-blur-md rounded-2xl shadow-xl border border-white/50 px-4 py-3 flex justify-between items-center md:bg-white/80 md:rounded-full md:px-6 md:py-3">
+      <div class="flex items-center">
+        <div class="flex-shrink-0">
+          <a href="../index.html" class="text-lg md:text-xl font-bold bg-gradient-to-r from-green-500 to-green-400 bg-clip-text text-transparent">
+            Dr. Sameel's</a>
+        </div>
+      </div>
+      <div class="hidden md:flex items-center space-x-1">
+        <a href="../index.html"
+          class="text-gray-700 hover:text-green-500 px-3 py-2 text-sm font-medium transition-colors rounded-full hover:bg-white/50">Home</a>
+        <a href="./services.html"
+          class="text-gray-700 hover:text-green-500 px-3 py-2 text-sm font-medium transition-colors rounded-full hover:bg-white/50">Services</a>
+        <a href="./about.html"
+          class="text-gray-700 hover:text-green-500 px-3 py-2 text-sm font-medium transition-colors rounded-full hover:bg-white/50">About</a>
+        <a href="./telerehab.html"
+          class="text-gray-700 hover:text-green-500 px-3 py-2 text-sm font-medium transition-colors rounded-full hover:bg-white/50">Telerehab</a>
+        <a href="./testimonials.html"
+          class="text-green-500 px-3 py-2 text-sm font-medium transition-colors rounded-full bg-green-50 hover:bg-green-100">Reviews</a>
+        <a href="./contact.html"
+          class="text-gray-700 hover:text-green-500 px-3 py-2 text-sm font-medium transition-colors rounded-full hover:bg-white/50">Contact</a>
+      </div>
+      <div class="flex items-center space-x-2">
+        <a href="./contact.html"
+          class="bg-gradient-to-r from-green-500 to-green-400 text-white px-4 py-2 rounded-full text-sm font-medium hover:from-green-600 hover:to-green-500 transition-all duration-200 whitespace-nowrap hidden md:inline-block">Book</a>
+        <button class="md:hidden p-3 rounded-full text-gray-700 hover:text-green-500 hover:bg-green-50 bg-green-50/50" aria-label="Menu"
+          id="mobile-menu-button">
+          <i data-lucide="menu" class="h-6 w-6"></i>
+        </button>
+        <a href="./contact.html"
+          class="md:hidden bg-gradient-to-r from-green-500 to-green-400 text-white p-3 rounded-full hover:from-green-600 hover:to-green-500 transition-all duration-200">
+          <i data-lucide="calendar" class="h-5 w-5"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="py-16 bg-gradient-to-br from-green-50 to-white relative overflow-hidden pt-24">
+      <img data-ai="generate" data-slot="testimonials-bg" data-prompt="Soft abstract background with gentle green gradients and flowing organic shapes, very subtle and light, suitable for testimonials section" data-ar="16:9" src="https://cdn.ailandingpage.ai/ai-landingpage/user-generate/0d9eefc7-8987-4c53-b0e8-455335416f9c/0d9eefc7-8987-4c53-b0e8-455335416f9c/testimonials/testimonials-bg-c05f8ad1e11448ecbeaecc1e8b31ea8c.png" alt="Background pattern" width="1200" height="675" class="absolute inset-0 w-full h-full object-cover opacity-30" loading="lazy" decoding="async" fetchpriority="auto">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-12">
+            <br>
+            <br>
+            <br>
+          <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Patient Success Stories</h1>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">Hear from patients who have experienced remarkable recovery through Dr. Sameel's expert physiotherapy care.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="bg-white p-6 rounded-2xl shadow-lg border border-green-100">
+            <div class="flex items-center mb-4">
+              <div class="flex text-[#89d957]">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+              </div>
+            </div>
+            <p class="text-gray-700 mb-4">"Dr. Sameel's telerehabilitation program was a game-changer for my recovery. The convenience of home sessions combined with professional expertise helped me regain full mobility after my knee surgery."</p>
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-gradient-to-r from-[#89d957] to-[#c9e265] rounded-full flex items-center justify-center">
+                <span class="text-white font-semibold">SM</span>
+              </div>
+              <div class="ml-3">
+                <h4 class="font-semibold text-gray-900">Sarah Mitchell</h4>
+                <p class="text-sm text-gray-600">Knee Surgery Recovery</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white p-6 rounded-2xl shadow-lg border border-green-100">
+            <div class="flex items-center mb-4">
+              <div class="flex text-[#89d957]">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+              </div>
+            </div>
+            <p class="text-gray-700 mb-4">"The personalized approach and constant support from Dr. Sameel made all the difference in my back pain treatment. I can now return to my active lifestyle pain-free."</p>
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-gradient-to-r from-[#89d957] to-[#c9e265] rounded-full flex items-center justify-center">
+                <span class="text-white font-semibold">MJ</span>
+              </div>
+              <div class="ml-3">
+                <h4 class="font-semibold text-gray-900">Michael Johnson</h4>
+                <p class="text-sm text-gray-600">Chronic Back Pain</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white p-6 rounded-2xl shadow-lg border border-green-100">
+            <div class="flex items-center mb-4">
+              <div class="flex text-[#89d957]">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+              </div>
+            </div>
+            <p class="text-gray-700 mb-4">"As an athlete, I needed specialized care for my shoulder injury. Dr. Sameel's expertise and innovative treatment methods got me back to competition faster than expected."</p>
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-gradient-to-r from-[#89d957] to-[#c9e265] rounded-full flex items-center justify-center">
+                <span class="text-white font-semibold">EP</span>
+              </div>
+              <div class="ml-3">
+                <h4 class="font-semibold text-gray-900">Emma Parker</h4>
+                <p class="text-sm text-gray-600">Sports Injury Recovery</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white p-6 rounded-2xl shadow-lg border border-green-100">
+            <div class="flex items-center mb-4">
+              <div class="flex text-[#89d957]">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+              </div>
+            </div>
+            <p class="text-gray-700 mb-4">"After years of chronic neck pain, Dr. Sameel's holistic approach finally provided lasting relief. His attention to detail and patient-centered care is exceptional."</p>
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-gradient-to-r from-[#89d957] to-[#c9e265] rounded-full flex items-center justify-center">
+                <span class="text-white font-semibold">RW</span>
+              </div>
+              <div class="ml-3">
+                <h4 class="font-semibold text-gray-900">Robert Williams</h4>
+                <p class="text-sm text-gray-600">Neck Pain Treatment</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white p-6 rounded-2xl shadow-lg border border-green-100">
+            <div class="flex items-center mb-4">
+              <div class="flex text-[#89d957]">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+              </div>
+            </div>
+            <p class="text-gray-700 mb-4">"The telerehabilitation sessions were incredibly convenient for someone with a busy schedule like mine. Dr. Sameel made sure I did each exercise correctly despite the remote format."</p>
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-gradient-to-r from-[#89d957] to-[#c9e265] rounded-full flex items-center justify-center">
+                <span class="text-white font-semibold">AJ</span>
+              </div>
+              <div class="ml-3">
+                <h4 class="font-semibold text-gray-900">Amanda Johnson</h4>
+                <p class="text-sm text-gray-600">Posture Correction</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white p-6 rounded-2xl shadow-lg border border-green-100">
+            <div class="flex items-center mb-4">
+              <div class="flex text-[#89d957]">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+              </div>
+            </div>
+            <p class="text-gray-700 mb-4">"Dr. Sameel's approach to post-surgery rehabilitation was comprehensive and effective. I felt confident in my recovery knowing he was monitoring my progress closely."</p>
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-gradient-to-r from-[#89d957] to-[#c9e265] rounded-full flex items-center justify-center">
+                <span class="text-white font-semibold">TK</span>
+              </div>
+              <div class="ml-3">
+                <h4 class="font-semibold text-gray-900">Thomas Kelly</h4>
+                <p class="text-sm text-gray-600">Post-Surgical Recovery</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="text-center mt-12">
+          <div class="inline-flex items-center bg-white px-6 py-3 rounded-full shadow-sm border border-green-100">
+            <span class="text-2xl font-bold text-[#89d957] mr-2">500+</span>
+            <span class="text-gray-700">Successful Recovery Stories</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Additional Testimonials Section -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">More Patient Experiences</h2>
+          <p class="text-xl text-gray-600">See how Dr. Sameel has helped patients with various conditions</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-gradient-to-br from-green-50 to-white p-8 rounded-2xl shadow-lg">
+            <div class="flex items-center mb-6">
+              <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-green-400 rounded-full flex items-center justify-center">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 ml-4">Sports Injury Recovery</h3>
+            </div>
+            <p class="text-gray-600 mb-4">"Competing in the regional championships was a dream come true, thanks to Dr. Sameel's targeted rehabilitation program that had me back on the field faster than expected."</p>
+            <p class="text-sm text-gray-500">- James Peterson, College Athlete</p>
+          </div>
+          
+          <div class="bg-gradient-to-br from-green-50 to-white p-8 rounded-2xl shadow-lg">
+            <div class="flex items-center mb-6">
+              <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-green-400 rounded-full flex items-center justify-center">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 ml-4">Chronic Pain Management</h3>
+            </div>
+            <p class="text-gray-600 mb-4">"After years of struggling with lower back pain, Dr. Sameel's combination of manual therapy and targeted exercises finally brought lasting relief. I'm grateful for his expertise."</p>
+            <p class="text-sm text-gray-500">- Linda Rodriguez, Office Worker</p>
+          </div>
+          
+          <div class="bg-gradient-to-br from-green-50 to-white p-8 rounded-2xl shadow-lg">
+            <div class="flex items-center mb-6">
+              <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-green-400 rounded-full flex items-center justify-center">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 ml-4">Posture Correction</h3>
+            </div>
+            <p class="text-gray-600 mb-4">"Working long hours at a desk had caused severe neck and shoulder tension. Dr. Sameel's ergonomic advice and exercise program completely transformed my daily comfort."</p>
+            <p class="text-sm text-gray-500">- David Chen, Software Engineer</p>
+          </div>
+          
+          <div class="bg-gradient-to-br from-green-50 to-white p-8 rounded-2xl shadow-lg">
+            <div class="flex items-center mb-6">
+              <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-green-400 rounded-full flex items-center justify-center">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 ml-4">Telerehabilitation Success</h3>
+            </div>
+            <p class="text-gray-600 mb-4">"Living in a rural area made accessing quality physiotherapy difficult. Dr. Sameel's telerehabilitation service provided the same level of care from home with excellent results."</p>
+            <p class="text-sm text-gray-500">- Margaret Thompson, Rural Patient</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Call to Action Section -->
+    <section class="relative py-20 overflow-hidden bg-gradient-to-br from-green-500 to-green-400">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Join Our Community of Successful Patients</h2>
+        <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">Start your recovery journey with Dr. Sameel's expert physiotherapy services today.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a href="./contact.html" class="bg-white text-green-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-50 transition-colors shadow-lg w-full sm:w-auto text-center">Book Your Appointment</a>
+          <a href="./contact.html" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-green-600 transition-colors w-full sm:w-auto text-center">Free Consultation</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-black text-white py-8 md:py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-4">
+        <div class="text-left">
+          <h3 class="text-xl md:text-2xl font-bold bg-gradient-to-r from-green-400 to-green-300 bg-clip-text text-transparent mb-2 md:mb-4">Dr. Sameel Hassan</h3>
+          <p class="text-sm md:text-base">Physiotherapist &amp; Telerehabilitation Specialist</p>
+          <p class="text-gray-300 text-xs sm:text-sm md:text-base mt-2 md:mt-4 mb-4">Expert physiotherapy and telerehabilitation services. Helping patients recover and maintain optimal physical health through personalized treatment plans.</p>
+          <div class="flex justify-start space-x-4">
+            <a href="#" class="text-gray-400 hover:text-green-400 transition-colors" aria-label="Facebook">
+              <i data-lucide="facebook" class="h-5 w-5"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-green-400 transition-colors" aria-label="Twitter">
+              <i data-lucide="twitter" class="h-5 w-5"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-green-400 transition-colors" aria-label="LinkedIn">
+              <i data-lucide="linkedin" class="h-5 w-5"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-green-400 transition-colors" aria-label="Instagram">
+              <i data-lucide="instagram" class="h-5 w-5"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="text-left">
+          <h4 class="text-base md:text-lg font-semibold mb-4">Services</h4>
+          <ul class="space-y-2">
+            <li><a href="./pages/services.html" class="text-gray-300 hover:text-green-400 transition-colors text-xs sm:text-sm md:text-base">Physiotherapy</a></li>
+            <li><a href="./pages/telerehab.html" class="text-gray-300 hover:text-green-400 transition-colors text-xs sm:text-sm md:text-base">Telerehabilitation</a></li>
+            <li><a href="./pages/services.html" class="text-gray-300 hover:text-green-400 transition-colors text-xs sm:text-sm md:text-base">Sports Therapy</a></li>
+            <li><a href="./pages/services.html" class="text-gray-300 hover:text-green-400 transition-colors text-xs sm:text-sm md:text-base">Pain Management</a></li>
+          </ul>
+        </div>
+        
+        <div class="text-left">
+          <h4 class="text-base md:text-lg font-semibold mb-4">Company</h4>
+          <ul class="space-y-2">
+            <li><a href="./pages/about.html" class="text-gray-300 hover:text-green-400 transition-colors text-xs sm:text-sm md:text-base">About Dr. Sameel</a></li>
+            <li><a href="./pages/testimonials.html" class="text-gray-300 hover:text-green-400 transition-colors text-xs sm:text-sm md:text-base">Patient Stories</a></li>
+            <li><a href="./pages/contact.html" class="text-gray-300 hover:text-green-400 transition-colors text-xs sm:text-sm md:text-base">Contact Us</a></li>
+          </ul>
+        </div>
+        
+        <div class="text-left">
+          <h4 class="text-base md:text-lg font-semibold mb-4">Support</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-300 hover:text-green-400 transition-colors text-xs sm:text-sm md:text-base">Help Center</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-green-400 transition-colors text-xs sm:text-sm md:text-base">Privacy Policy</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-green-400 transition-colors text-xs sm:text-sm md:text-base">Terms of Service</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-green-400 transition-colors text-xs sm:text-sm md:text-base">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-6 md:mt-8 pt-6 md:pt-8 flex flex-col md:flex-row justify-start items-start">
+        <p class="text-gray-400 text-xs sm:text-sm">© 2026 Dr. Sameel. All rights reserved.</p>
+        <div class="flex flex-wrap justify-start gap-4 mt-2 md:mt-0">
+          <a href="#" class="text-gray-400 hover:text-green-400 text-xs sm:text-sm transition-colors">Privacy Policy</a>
+          <a href="#" class="text-gray-400 hover:text-green-400 text-xs sm:text-sm transition-colors">Terms of Service</a>
+          <a href="#" class="text-gray-400 hover:text-green-400 text-xs sm:text-sm transition-colors">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    // Mobile touch enhancements and side menu functionality
+        document.addEventListener('DOMContentLoaded', function () {
+          const mobileMenuButton = document.getElementById('mobile-menu-button');
+          const sideMenu = document.getElementById('side-menu');
+          const sideMenuOverlay = document.getElementById('side-menu-overlay');
+          const closeMenuButton = document.getElementById('close-menu-button');
+          
+          // Add touch event listeners for better mobile experience
+          if ('ontouchstart' in window) {
+            document.body.classList.add('touch-device');
+          }
+
+          if (mobileMenuButton && sideMenu && sideMenuOverlay) {
+            mobileMenuButton.addEventListener('click', function (e) {
+              e.preventDefault();
+              sideMenu.classList.add('active');
+              sideMenuOverlay.classList.add('active');
+              document.body.style.overflow = 'hidden'; // Prevent background scrolling
+              lucide.createIcons(); // Reinitialize icons
+              
+              // Add animation for better UX
+              setTimeout(() => {
+                sideMenu.style.transform = 'translateX(0)';
+              }, 10);
+            });
+
+            // Close side menu when clicking the overlay
+            sideMenuOverlay.addEventListener('click', function (e) {
+              e.preventDefault();
+              sideMenu.classList.remove('active');
+              sideMenuOverlay.classList.remove('active');
+              document.body.style.overflow = ''; // Restore scrolling
+            });
+            
+            // Close side menu when clicking the close button
+            if (closeMenuButton) {
+              closeMenuButton.addEventListener('click', function (e) {
+                e.preventDefault();
+                sideMenu.classList.remove('active');
+                sideMenuOverlay.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+              });
+            }
+            
+            // Close menu when clicking on any link inside the menu
+            const menuLinks = document.querySelectorAll('.side-menu-nav a');
+            menuLinks.forEach(link => {
+              link.addEventListener('click', function(e) {
+                // Small delay to ensure smooth transition
+                setTimeout(() => {
+                  sideMenu.classList.remove('active');
+                  sideMenuOverlay.classList.remove('active');
+                  document.body.style.overflow = '';
+                }, 200);
+              });
+            });
+          }
+          
+          // Enhanced scroll behavior for mobile
+          const anchorLinks = document.querySelectorAll('a[href^="#"]');
+          anchorLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+              const href = this.getAttribute('href');
+              if (href !== '#') {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                  const offsetTop = target.offsetTop - 100; // Account for fixed navbar
+                  window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                  });
+                  
+                  // Close mobile menu if open
+                  sideMenu.classList.remove('active');
+                  sideMenuOverlay.classList.remove('active');
+                  document.body.style.overflow = '';
+                }
+              }
+            });
+          });
+        });
+    
+    // Re-initialize all Lucide icons after DOM is fully loaded to ensure footer icons render
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(() => {
+          lucide.createIcons();
+        }, 100);
+      });
+    } else {
+      // If DOM is already loaded, initialize immediately
+      lucide.createIcons();
+    }
+  </script>
+</body>
+</html>
