@@ -403,11 +403,6 @@
               sideMenuOverlay.classList.add('active');
               document.body.style.overflow = 'hidden'; // Prevent background scrolling
               lucide.createIcons(); // Reinitialize icons
-              
-              // Add animation for better UX
-              setTimeout(() => {
-                sideMenu.style.transform = 'translateX(0)';
-              }, 10);
             });
 
             // Close side menu when clicking the overlay
@@ -432,12 +427,10 @@
             const menuLinks = document.querySelectorAll('.side-menu-nav a');
             menuLinks.forEach(link => {
               link.addEventListener('click', function(e) {
-                // Small delay to ensure smooth transition
-                setTimeout(() => {
-                  sideMenu.classList.remove('active');
-                  sideMenuOverlay.classList.remove('active');
-                  document.body.style.overflow = '';
-                }, 200);
+                // Close menu immediately without delay
+                sideMenu.classList.remove('active');
+                sideMenuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
               });
             });
           }
